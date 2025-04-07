@@ -9,4 +9,16 @@ describe("TodoList Component", () => {
     expect(screen.getByPlaceholderText("Add a new task")).toBeInTheDocument();
     expect(screen.getByText("Add")).toBeInTheDocument();
   });
+
+  it("should add a new todo when clicking Add button", () => {
+    render(<TodoList />);
+
+    const input = screen.getByPlaceholderText("Add a new task");
+    const button = screen.getByText("Add");
+
+    fireEvent.change(input, { target: { value: "Learn Vitest" } });
+    fireEvent.click(button);
+
+    expect(screen.getByText("Learn Vitest")).toBeInTheDocument();
+  });
 });
