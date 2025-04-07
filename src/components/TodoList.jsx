@@ -16,8 +16,10 @@ function TodoList() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-md">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">To-Do List</h1>
+    <div className="w-full max-w-sm sm:max-w-md md:max-w-lg mx-auto p-4 sm:p-6 bg-white rounded-xl shadow-md">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 text-center sm:text-left">
+        To-Do List
+      </h1>
 
       <div className="flex mb-4">
         <input
@@ -25,14 +27,14 @@ function TodoList() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Add a new task"
-          className="flex-1 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          className="flex-1 px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
           onKeyDown={(e) => {
             if (e.key === "Enter") addTodo();
           }}
         />
         <button
           onClick={addTodo}
-          className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-r-lg transition-colors duration-300"
+          className="bg-purple-600 hover:bg-purple-700 text-white px-3 sm:px-4 py-2 text-sm sm:text-base rounded-r-lg transition-colors duration-300"
         >
           Add
         </button>
@@ -45,7 +47,7 @@ function TodoList() {
           ))}
         </ul>
       ) : (
-        <p className="text-gray-500 text-center py-4">No tasks yet. Add one above!</p>
+        <p className="text-gray-500 text-center py-4 text-sm sm:text-base">No tasks yet. Add one above!</p>
       )}
     </div>
   );
