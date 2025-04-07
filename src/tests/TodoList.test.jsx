@@ -21,4 +21,19 @@ describe("TodoList Component", () => {
 
     expect(screen.getByText("Learn Vitest")).toBeInTheDocument();
   });
+
+  it("should remove a todo when clicking Remove button", () => {
+    render(<TodoList />);
+
+    const input = screen.getByPlaceholderText("Add a new task");
+    const addButton = screen.getByText("Add");
+
+    fireEvent.change(input, { target: { value: "Test Remove" } });
+    fireEvent.click(addButton);
+
+    const removeButton = screen.getByText("Remove");
+    fireEvent.click(removeButton);
+
+    expect(screen.queryByText("Test Remove")).not.toBeInTheDocument();
+  });
 });
