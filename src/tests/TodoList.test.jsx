@@ -31,8 +31,10 @@ describe("TodoList Component", () => {
     fireEvent.change(input, { target: { value: "Test Remove" } });
     fireEvent.click(addButton);
 
-    const removeButton = screen.getByText("Remove");
-    fireEvent.click(removeButton);
+    expect(screen.getByText("Test Remove")).toBeInTheDocument();
+
+    const deleteButton = screen.getByLabelText("Delete task");
+    fireEvent.click(deleteButton);
 
     expect(screen.queryByText("Test Remove")).not.toBeInTheDocument();
   });
